@@ -125,12 +125,6 @@ class _MyHomePageState extends State<MyHomePage> {
                     elevation: 5,
                     surfaceTintColor: Colors.white),
                 onPressed: () {
-                  if (!_rolledValues.isEmpty) {
-                    scrollController.animateTo(
-                        scrollController.position.minScrollExtent,
-                        duration: Duration(seconds: 1),
-                        curve: Curves.easeOut);
-                  }
                   setState(() {
                     _rolledValues.insert(
                         0,
@@ -138,6 +132,10 @@ class _MyHomePageState extends State<MyHomePage> {
                             dice: _selectedDice,
                             rolled: _selectedDice.rollValue));
                   });
+                  scrollController.animateTo(
+                      scrollController.position.minScrollExtent,
+                      duration: Duration(seconds: 1),
+                      curve: Curves.easeOut);
                 },
                 child:
                     Image.network(_selectedDice.image, width: 300, height: 300),
@@ -153,7 +151,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         itemCount: _rolledValues.length,
                         itemBuilder: (context, index) {
                           return SizedBox(
-                              width: 150,
+                              width: 140,
                               height: 120,
                               child: Card(
                                   color: Colors.white,
@@ -170,12 +168,13 @@ class _MyHomePageState extends State<MyHomePage> {
                                                 width: 40,
                                                 height: 40,
                                               ),
-                                              Text(
-                                                  '${_rolledValues[index].dice.name}'),
+                                              Text(_rolledValues[index]
+                                                  .dice
+                                                  .name),
                                             ]),
                                         Text(
                                           '${_rolledValues[index].rolled}',
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                               color: Colors.blueGrey,
                                               fontSize: 48),
                                         ),
