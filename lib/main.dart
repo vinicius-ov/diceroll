@@ -65,8 +65,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-  int _minValue = 1;
   List<RolledDice> _rolledValues = [];
 
   Dice _selectedDice = diceList.first;
@@ -156,7 +154,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               child: Card(
                                   color: Colors.white,
                                   child: Padding(
-                                      padding: EdgeInsets.all(16),
+                                      padding: const EdgeInsets.all(16),
                                       child: Center(
                                           child: Row(children: [
                                         Column(
